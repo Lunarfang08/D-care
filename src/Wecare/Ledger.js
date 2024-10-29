@@ -57,17 +57,53 @@ const Ledger = () => {
     };
 
     const downloadPDF = () => {
-        const input = document.getElementById('ledger-table');
-        html2canvas(input).then((canvas) => {
-            const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            const imgWidth = 210;
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
-            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-            pdf.save('ledger.pdf');
+        const { totalDebit, totalCredit, totalBalance } = calculateTotals();
+        const pdf = new jsPDF('p', 'mm', 'a4'); // Initialize PDF (Portrait, mm units, A4 page size)
+    
+        // Set title
+        pdf.setFontSize(18);
+        pdf.text('Dcare Ltd. Ledger', 105, 20, { align: 'center' });
+    
+        // Add a small subtitle with today's date
+        pdf.setFontSize(12);
+        pdf.text('Generated on: ' + new Date().toLocaleDateString(), 10, 30);
+    
+        // Define headers and rows for the table
+        const headers = ['Date', 'Particulars', 'Debit', 'Credit', 'Balance'];
+        const rows = ledgers.map((ledger) => [
+            ledger.date,
+            ledger.particulars,
+            ledger.debit.toString(),
+            ledger.credit.toString(),
+            ledger.balance.toString(),
+        ]);
+    
+        // Add totals row to the data
+        rows.push([
+            'Total',
+            '',
+            totalDebit.toString(),
+            totalCredit.toString(),
+            totalBalance.toString(),
+        ]);
+    
+        // Start drawing the table on the PDF (at Y position 40)
+        let startY = 40;
+        pdf.setFontSize(10);
+        headers.forEach((header, index) => {
+            pdf.text(header, 10 + index * 40, startY); // Place headers evenly spaced
         });
+    
+        // Draw each row under the headers
+        rows.forEach((row, rowIndex) => {
+            row.forEach((cell, cellIndex) => {
+                pdf.text(cell, 10 + cellIndex * 40, startY + (rowIndex + 1) * 10);
+            });
+        });
+    
+        // Save the PDF with the given filename
+        pdf.save('ledger.pdf');
     };
-
     const navigate = useNavigate();
 
     const { totalDebit, totalCredit, totalBalance } = calculateTotals();
@@ -110,46 +146,48 @@ const Ledger = () => {
                 <button type="submit">Add Entry</button>
             </form>
 
-            <table className="ledger-table" id="ledger-table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Particulars</th>
-                        <th>Dr (Debit)</th>
-                        <th>Cr (Credit)</th>
-                        <th>Balance</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {ledgers.map((ledger) => (
-                        <tr key={ledger.id}>
-                            <td>{ledger.date}</td>
-                            <td>{ledger.particulars}</td>
-                            <td>{ledger.debit}</td>
-                            <td>{ledger.credit}</td>
-                            <td>{ledger.balance}</td>
-                            <td>
-                                <button
-                                    className="remove-btn"
-                                    onClick={() => handleRemoveLedger(ledger.id)}
-                                >
-                                    Remove
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colSpan="2">Total</td>
-                        <td>{totalDebit}</td>
-                        <td>{totalCredit}</td>
-                        <td>{totalBalance}</td>
-                        <td></td>
-                    </tr>
-                </tfoot>
-            </table>
+            <div className="table-container">
+    <table className="ledger-table" id="ledger-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Particulars</th>
+                <th>Dr (Debit)</th>
+                <th>Cr (Credit)</th>
+                <th>Balance</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {ledgers.map((ledger) => (
+                <tr key={ledger.id}>
+                    <td>{ledger.date}</td>
+                    <td>{ledger.particulars}</td>
+                    <td>{ledger.debit}</td>
+                    <td>{ledger.credit}</td>
+                    <td>{ledger.balance}</td>
+                    <td>
+                        <button
+                            className="remove-btn"
+                            onClick={() => handleRemoveLedger(ledger.id)}
+                        >
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+            ))}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colSpan="2">Total</td>
+                <td>{totalDebit}</td>
+                <td>{totalCredit}</td>
+                <td>{totalBalance}</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
 
             <div className="button-group">
                 <button className="go-back-button" onClick={() => navigate("/")}>

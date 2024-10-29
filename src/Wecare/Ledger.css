@@ -1,108 +1,137 @@
-/* Ledger.css */
+/* General styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
 .ledger-container {
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin: 20px auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
     text-align: center;
     margin-bottom: 20px;
+    color: #333;
 }
 
+/* Form Styling */
 .ledger-form {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    justify-content: space-between;
     margin-bottom: 20px;
 }
 
 .ledger-form input {
-    flex: 1;
-    min-width: 150px;
-    padding: 8px;
-    border: 1px solid #ddd;
+    flex: 1 1 48%;
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s;
 }
 
-button {
-    padding: 10px 15px;
-    background-color: #28a745;
+.ledger-form input:focus {
+    border-color: #007bff;
+}
+
+.ledger-form button {
+    padding: 12px 20px;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    flex: 1 1 100%;
+    margin-top: 10px;
     transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #218838;
+.ledger-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Wrapper to enable horizontal scroll */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
 }
 
 .ledger-table {
     width: 100%;
+    min-width: 600px; /* Ensure minimum width */
     border-collapse: collapse;
-    margin-top: 20px;
+    font-size: 14px;
 }
 
 .ledger-table th, .ledger-table td {
     padding: 12px;
-    border: 1px solid #ddd;
     text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
 .ledger-table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+/* Hover effect */
+.ledger-table tbody tr:hover {
     background-color: #f1f1f1;
 }
 
-.remove-btn {
-    padding: 5px 10px;
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.remove-btn:hover {
-    background-color: #c82333;
-}
-
-@media (max-width: 600px) {
-    .ledger-form input {
-        min-width: 100%;
-    }
-
-    .ledger-table th, .ledger-table td {
-        font-size: 14px;
-    }
-}
+/* Button Group Styling */
 .button-group {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
 
-.download-btn {
-    padding: 10px 15px;
+.button-group button {
+    padding: 12px 20px;
+    border: none;
     background-color: #007bff;
     color: white;
-    border: none;
-    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-.download-btn:hover {
+.button-group button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
-tfoot td {
-    font-weight: bold;
-    background-color: #f1f1f1;
+.button-group .download-btn {
+    background-color: #28a745;
+}
+
+.button-group .download-btn:hover {
+    background-color: #218838;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ledger-container, .ledger-form, .ledger-table {
+    animation: fadeIn 0.5s ease-in-out;
 }

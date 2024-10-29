@@ -133,75 +133,80 @@ const EmployeeList = () => {
             </header>
 
             <section className="employee-list">
-                <h2>List of Employees</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Employee No</th>
-                            <th>Name</th>
-                            <th>Profession</th>
-                            <th>View Payslip</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {employees.map(employee => (
-                            <tr key={employee.empId}>
-                                <td>{employee.empId}</td>
-                                <td>{employee.name}</td>
-                                <td>{employee.profession}</td>
-                                <td>
-                                    <Link to={`/payslip/${employee.empId}`}>View Payslip</Link>
-                                </td>
-                                <td>
-                                    <button onClick={() => handleRemoveEmployee(employee.empId)}>Remove</button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+    <h2>List of Employees</h2>
+    <div className="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Employee No</th>
+                    <th>Name</th>
+                    <th>Profession</th>
+                    <th>View Payslip</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {employees.map(employee => (
+                    <tr key={employee.empId}>
+                        <td>{employee.empId}</td>
+                        <td>{employee.name}</td>
+                        <td>{employee.profession}</td>
+                        <td>
+                            <Link to={`/payslip/${employee.empId}`}>View Payslip</Link>
+                        </td>
+                        <td>
+                            <button onClick={() => handleRemoveEmployee(employee.empId)}>
+                                Remove
+                            </button>
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    </div>
 
-                <h2>Add New Employee</h2>
-                <form className="add-employee-form" onSubmit={handleAddEmployee}>
-                    <input
-                        type="text"
-                        placeholder="Employee ID"
-                        value={newEmployee.empId}
-                        onChange={(e) => setNewEmployee({ ...newEmployee, empId: e.target.value })}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Name"
-                        value={newEmployee.name}
-                        onChange={(e) => setNewEmployee({ ...newEmployee, name: e.target.value })}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Profession"
-                        value={newEmployee.profession}
-                        onChange={(e) => setNewEmployee({ ...newEmployee, profession: e.target.value })}
-                    />
-                    <input
-                        type="number"
-                        placeholder="Basic Salary"
-                        value={newEmployee.basicSalary}
-                        onChange={(e) => setNewEmployee({ ...newEmployee, basicSalary: e.target.value })}
-                    />
-                    <input
-                        type="number"
-                        placeholder="Food Allowance"
-                        value={newEmployee.foodAllowance}
-                        onChange={(e) => setNewEmployee({ ...newEmployee, foodAllowance: e.target.value })}
-                    />
-                    <input
-                        type="number"
-                        placeholder="Accommodation"
-                        value={newEmployee.accommodation}
-                        onChange={(e) => setNewEmployee({ ...newEmployee, accommodation: e.target.value })}
-                    />
-                    <button type="submit">Add Employee</button>
-                </form>
-            </section>
+    <h2>Add New Employee</h2>
+    <form className="add-employee-form" onSubmit={handleAddEmployee}>
+        <input
+            type="text"
+            placeholder="Employee ID"
+            value={newEmployee.empId}
+            onChange={(e) => setNewEmployee({ ...newEmployee, empId: e.target.value })}
+        />
+        <input
+            type="text"
+            placeholder="Name"
+            value={newEmployee.name}
+            onChange={(e) => setNewEmployee({ ...newEmployee, name: e.target.value })}
+        />
+        <input
+            type="text"
+            placeholder="Profession"
+            value={newEmployee.profession}
+            onChange={(e) => setNewEmployee({ ...newEmployee, profession: e.target.value })}
+        />
+        <input
+            type="number"
+            placeholder="Basic Salary"
+            value={newEmployee.basicSalary}
+            onChange={(e) => setNewEmployee({ ...newEmployee, basicSalary: e.target.value })}
+        />
+        <input
+            type="number"
+            placeholder="Food Allowance"
+            value={newEmployee.foodAllowance}
+            onChange={(e) => setNewEmployee({ ...newEmployee, foodAllowance: e.target.value })}
+        />
+        <input
+            type="number"
+            placeholder="Accommodation"
+            value={newEmployee.accommodation}
+            onChange={(e) => setNewEmployee({ ...newEmployee, accommodation: e.target.value })}
+        />
+        <button type="submit">Add Employee</button>
+    </form>
+</section>
+
 
             <div className="button-group">
                 <button className="go-back-button" onClick={() => navigate("/")}>Go Back</button>
