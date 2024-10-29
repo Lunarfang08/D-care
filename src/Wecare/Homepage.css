@@ -1,0 +1,96 @@
+/* Homepage.css */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://www.pixcrafter.com/wp-content/uploads/2023/05/vector-delivery-boy-illustration.jpg') no-repeat center center;
+    background-attachment: fixed; /* Parallax Effect */
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-section h1 {
+    font-size: 56px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.hero-section p {
+    font-size: 22px;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    background-color: #ffa726;
+    padding: 14px 30px;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #fb8c00;
+    transform: translateY(-5px); /* Subtle hover effect */
+}
+
+.cta-button:active {
+    transform: scale(0.95); /* Button click feedback */
+}
+
+/* Additional Content Section after the Hero */
+.text-section {
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.text-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #00695c;
+}
+
+.text-section p {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.text-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 38px;
+    }
+
+    .hero-section p {
+        font-size: 18px;
+    }
+
+    .cta-button {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+
+    .text-section h2 {
+        font-size: 28px;
+    }
+
+    .text-section p {
+        font-size: 16px;
+    }
+}

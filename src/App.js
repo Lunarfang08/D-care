@@ -68,27 +68,71 @@
 // // & "C:\Program Files\Git\bin\git.exe" push origin main
 
 
+// import React from 'react';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import Book from './Healthcare-mgmt/Book';
+// import About from './Healthcare-mgmt/About';
+// import Contact from './Healthcare-mgmt/Contact';
+// import Location from './Healthcare-mgmt/Location';
+// import Receipt from './Healthcare-mgmt/Receipt';
+// function App() {
+//   return (
+//     <Router>
+//       <div className="App">
+//         <Routes>
+//           <Route path="/" element={<Book />} /> {/* Home Page */}
+//           <Route path="/about" element={<About />} /> {/* About Page */}
+//           <Route path="/contact" element={<Contact />} /> {/* About Page */}
+//           <Route path="/location" element={<Location />} /> {/* About Page */}
+//           <Route path="/receipt" element={<Receipt />} /> {/* About Page */}
+//         </Routes>
+//       </div>
+//     </Router>
+//   );
+// }
+
+// export default App;
+
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Book from './Healthcare-mgmt/Book';
-import About from './Healthcare-mgmt/About';
-import Contact from './Healthcare-mgmt/Contact';
-import Location from './Healthcare-mgmt/Location';
-import Receipt from './Healthcare-mgmt/Receipt';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Employeelist from './Wecare/Employeelist';
+import Payslip from './Wecare/Payslip';
+import Homepage from './Wecare/Homepage';
+import About from './Wecare/About';
+import Contact from './Wecare/Contact';
+import Navbar from './Wecare/Navbar'; // Navbar component included
+import Ledger from "./Wecare/Ledger"; // Navbar component included
 function App() {
-  return (
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Book />} /> {/* Home Page */}
-          <Route path="/about" element={<About />} /> {/* About Page */}
-          <Route path="/contact" element={<Contact />} /> {/* About Page */}
-          <Route path="/location" element={<Location />} /> {/* About Page */}
-          <Route path="/receipt" element={<Receipt />} /> {/* About Page */}
-        </Routes>
-      </div>
-    </Router>
-  );
+    return (
+        <Router>
+            <div>
+                {/* Include the Navbar at the top for all routes */}
+                <Navbar />
+
+                <Routes>
+                    {/* Homepage Route */}
+                    <Route path="/" element={<Homepage />} />
+
+                    {/* Employee List Route */}
+                    <Route path="/employee-list" element={<Employeelist />} />
+
+                    {/* Payslip Page Route */}
+                    <Route path="/payslip/:empId" element={<Payslip />} />
+
+                    {/* About Page Route */}
+                    <Route path="/about" element={<About />} />
+
+                    {/* Contact Page Route */}
+                    <Route path="/contact" element={<Contact />} />
+
+                    
+                    {/* ledgar Page Route */}
+                    <Route path="/ledger" element={<Ledger />} />
+
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;

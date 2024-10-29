@@ -1,0 +1,131 @@
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #00695c;
+}
+
+h2 {
+    font-size: 20px;
+    color: #004d40;
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #555;
+}
+
+table td a {
+    text-decoration: none;
+    color: #00695c;
+}
+
+table td a:hover {
+    color: #004d40;
+}
+
+button {
+    padding: 8px 12px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #d32f2f;
+}
+
+.add-employee-form {
+    margin-top: 20px;
+}
+
+.add-employee-form input {
+    padding: 8px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.add-employee-form button {
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-employee-form button:hover {
+    background-color: #388E3C;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #00695c;
+    color: #fff;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+footer p {
+    font-size: 14px;
+}
+.go-back-button {
+    background-color: #00695c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.go-back-button:hover {
+    background-color: #004d40;
+}
+
+@media (max-width: 600px) {
+    .go-back-button {
+        width: 100%;
+    }
+}
