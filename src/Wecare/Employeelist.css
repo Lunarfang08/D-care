@@ -151,3 +151,22 @@ footer {
         margin-bottom: 10px;
     }
 }
+
+/* Footer Styling */
+.footer {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+.footer p {
+    margin: 5px 0;
+}
+
+.footer strong {
+    color: #ffc107; /* Optional: Gold color for emphasis */
+}

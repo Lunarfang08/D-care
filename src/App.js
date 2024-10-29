@@ -128,8 +128,12 @@ function App() {
                     
                     {/* ledgar Page Route */}
                     <Route path="/ledger" element={<Ledger />} />
-
                 </Routes>
+                <footer className="footer">
+    <p>&copy; 2024 Care Company. All Rights Reserved.</p>
+    <p>Powered by <strong>Arsal</strong> and <strong>Najaf</strong></p>
+</footer>
+
             </div>
         </Router>
     );
