@@ -1,9 +1,9 @@
-/* General styling */
+/* General Styles */
 body {
     font-family: 'Arial', sans-serif;
+    background-color: #f4f5f7;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
 }
 
 .ledger-container {
@@ -12,126 +12,178 @@ body {
     padding: 20px;
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-h1 {
+.ledger-header {
     text-align: center;
     margin-bottom: 20px;
-    color: #333;
 }
 
-/* Form Styling */
-.ledger-form {
+.ledger-header h1 {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.ledger-header p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Filter and Search */
+.filter-search-container {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: space-between;
-    margin-bottom: 20px;
 }
 
-.ledger-form input {
-    flex: 1 1 48%;
+.search-bar {
+    flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-    margin-bottom: 10px;
-    transition: border-color 0.3s;
 }
 
-.ledger-form input:focus {
-    border-color: #007bff;
+.filter-dropdown {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
-.ledger-form button {
-    padding: 12px 20px;
+.batch-actions {
+    margin-right: 10px;
+}
+
+.batch-button {
+    padding: 10px 15px;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    flex: 1 1 100%;
-    margin-top: 10px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
 }
 
-.ledger-form button:hover {
+.batch-button:hover {
     background-color: #0056b3;
 }
 
-/* Wrapper to enable horizontal scroll */
-.table-container {
-    width: 100%;
+/* Table */
+.table-wrapper {
     overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
 }
 
 .ledger-table {
     width: 100%;
-    min-width: 600px; /* Ensure minimum width */
     border-collapse: collapse;
-    font-size: 14px;
+    min-width: 800px;
 }
 
-.ledger-table th, .ledger-table td {
+.ledger-table th,
+.ledger-table td {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #eaeaea;
+    white-space: nowrap;
 }
 
 .ledger-table th {
     background-color: #007bff;
     color: white;
     font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
 }
 
-/* Hover effect */
+.ledger-table td {
+    font-size: 14px;
+    color: #333;
+}
+
 .ledger-table tbody tr:hover {
-    background-color: #f1f1f1;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
 }
 
-/* Button Group Styling */
-.button-group {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.button-group button {
-    padding: 12px 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.button-group button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
-
-.button-group .download-btn {
+.action-button {
+    padding: 6px 12px;
     background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
 }
 
-.button-group .download-btn:hover {
+.action-button:hover {
     background-color: #218838;
 }
 
-/* Animation */
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .filter-search-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .ledger-container {
+        padding: 10px;
+    }
+
+    .ledger-header h1 {
+        font-size: 20px;
+    }
+
+    .ledger-table {
+        min-width: 600px;
+    }
+
+    .batch-button, .action-button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+
+/* Smooth Table Scroll */
+.table-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #0056b3;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Fade-In Animation */
 @keyframes fadeIn {
     0% {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(-10px);
     }
     100% {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.ledger-container, .ledger-form, .ledger-table {
-    animation: fadeIn 0.5s ease-in-out;
 }

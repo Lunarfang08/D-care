@@ -19,7 +19,6 @@
 
 // export default App;
 
-
 // import React from "react";
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -28,7 +27,7 @@
 // import Contact from "./FYP/Contact";
 // import About from "./FYP/About";
 // import PlayGame from "./FYP/Playgame";
-// import Game1 from "./FYP/Game1"; 
+// import Game1 from "./FYP/Game1";
 // import Game2 from "./FYP/Game2";
 // import Game3 from "./FYP/Game3";
 // import Game4 from "./FYP/Game4";
@@ -67,7 +66,6 @@
 // // & "C:\Program Files\Git\bin\git.exe" commit -m "new project"
 // // & "C:\Program Files\Git\bin\git.exe" push origin main
 
-
 // import React from 'react';
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import Book from './Healthcare-mgmt/Book';
@@ -93,50 +91,50 @@
 
 // export default App;
 
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Employeelist from './Wecare/Employeelist';
-import Payslip from './Wecare/Payslip';
-import Homepage from './Wecare/Homepage';
-import About from './Wecare/About';
-import Contact from './Wecare/Contact';
-import Navbar from './Wecare/Navbar'; // Navbar component included
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Employeelist from "./Wecare/Employeelist";
+import Payslip from "./Wecare/Payslip";
+import Homepage from "./Wecare/Homepage";
+import About from "./Wecare/About";
+import Contact from "./Wecare/Contact";
+import Navbar from "./Wecare/Navbar"; // Navbar component included
 import Ledger from "./Wecare/Ledger"; // Navbar component included
 function App() {
-    return (
-        <Router>
-            <div>
-                {/* Include the Navbar at the top for all routes */}
-                <Navbar />
+  return (
+    <Router>
+      <div>
+        {/* Include the Navbar at the top for all routes */}
+        <Navbar />
 
-                <Routes>
-                    {/* Homepage Route */}
-                    <Route path="/" element={<Homepage />} />
+        <Routes>
+          {/* Homepage Route */}
+          <Route path="/" element={<Homepage />} />
 
-                    {/* Employee List Route */}
-                    <Route path="/employee-list" element={<Employeelist />} />
+          {/* Employee List Route */}
+          <Route path="/employee-list" element={<Employeelist />} />
 
-                    {/* Payslip Page Route */}
-                    <Route path="/payslip/:empId" element={<Payslip />} />
+          {/* Payslip Page Route */}
+          <Route path="/payslip/:empId" element={<Payslip />} />
 
-                    {/* About Page Route */}
-                    <Route path="/about" element={<About />} />
+          {/* About Page Route */}
+          <Route path="/about" element={<About />} />
 
-                    {/* Contact Page Route */}
-                    <Route path="/contact" element={<Contact />} />
+          {/* Contact Page Route */}
+          <Route path="/contact" element={<Contact />} />
 
-                    
-                    {/* ledgar Page Route */}
-                    <Route path="/ledger" element={<Ledger />} />
-                </Routes>
-                <footer className="footer">
-    <p>&copy; 2024 Care Company. All Rights Reserved.</p>
-    <p>Powered by <strong>Arsal</strong> and <strong>Najaf</strong></p>
-</footer>
-
-            </div>
-        </Router>
-    );
+          {/* ledgar Page Route */}
+          <Route path="/ledger" element={<Ledger />} />
+        </Routes>
+        <footer className="footer">
+          <p>&copy; 2024 Care Company. All Rights Reserved.</p>
+          <p>
+            Powered by <strong>Arsal</strong> and <strong>Najaf</strong>
+          </p>
+        </footer>
+      </div>
+    </Router>
+  );
 }
 
 export default App;

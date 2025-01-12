@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F1 Teams and Races</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>F1 Teams Management</h1>
+
+  <h2>Drivers</h2>
+  <ul>
+    <% drivers.forEach(driver => { %>
+      <li><%= driver.name %> (Race Skill: <%= driver.skill.race %>, Street Skill: <%= driver.skill.street %>)</li>
+    <% }) %>
+  </ul>
+
+  <h2>Cars</h2>
+  <ul>
+    <% cars.forEach(car => { %>
+      <li>Car ID: <%= car.id %>, Driver Number: <%= car.driverNumber %></li>
+    <% }) %>
+  </ul>
+
+  <h2>Races</h2>
+<ul>
+  <% races.forEach(race => { %>
+    <li>
+      Race ID: <%= race.id %>, 
+      Track ID: <%= race.trackId %>, 
+      Entrants: <%= Array.isArray(race.entrants) ? race.entrants.join(', ') : 'No entrants' %>
+    </li>
+  <% }) %>
+</ul>
+
+  <h3>Add New Race</h3>
+  <form action="/add-race" method="POST">
+    <input type="number" name="raceId" placeholder="Race ID" required>
+    <input type="number" name="trackId" placeholder="Track ID" required>
+    <input type="text" name="entrants" placeholder="Entrants (comma-separated)" required>
+    <button type="submit">Add Race</button>
+  </form>
+
+  <h3>Add New Driver</h3>
+  <form action="/add-driver" method="POST">
+    <input type="text" name="number" placeholder="Driver Number" required>
+    <input type="text" name="name" placeholder="Driver Name" required>
+    <input type="text" name="shortName" placeholder="Short Name" required>
+    <input type="number" name="raceSkill" placeholder="Race Skill (0-100)" required>
+    <input type="number" name="streetSkill" placeholder="Street Skill (0-100)" required>
+    <button type="submit">Add Driver</button>
+  </form>
+
+  <h3>Add New Car</h3>
+  <form action="/add-car" method="POST">
+    <input type="number" name="id" placeholder="Car ID" required>
+    <input type="number" name="driverNumber" placeholder="Driver Number" required>
+    <input type="number" name="raceSuitability" placeholder="Race Suitability (0-100)" required>
+    <input type="number" name="streetSuitability" placeholder="Street Suitability (0-100)" required>
+    <input type="number" name="reliability" placeholder="Reliability (0-100)" required>
+    <button type="submit">Add Car</button>
+  </form>
+</body>
+</html>
